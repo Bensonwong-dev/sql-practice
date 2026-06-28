@@ -23,3 +23,25 @@ building toward Data Engineer role.
   when problem only needs highest value
 - Never name CTE same as source table
 - Always check ORDER BY in requirements
+- ### Window Functions
+OVER() = defines the window (group of rows)
+PARTITION BY = divides into groups (like GROUP BY
+               but keeps all rows)
+ORDER BY inside OVER = sorts within each partition
+
+ROW_NUMBER() = unique number per row even if tied
+RANK()       = same rank for ties, skips next number
+DENSE_RANK() = same rank for ties, no skipping
+
+SUM() OVER() = running total within partition
+AVG() OVER() = group average alongside each row
+LAG()        = access previous row value
+LEAD()       = access next row value
+
+Most common pattern:
+WITH ranked AS (
+    SELECT *, ROW_NUMBER() OVER(
+        PARTITION BY group_col
+        ORDER BY value_col DESC) AS rn
+    FROM table)
+SELECT * FROM ranked WHERE rn = 1
