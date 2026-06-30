@@ -23,10 +23,17 @@ building toward Data Engineer role.
   when problem only needs highest value
 - Never name CTE same as source table
 - Always check ORDER BY in requirements
-- Include ORDER BY column in GROUP BY too —
-  strict SQL mode rejects it otherwise
-- Always alias aggregate columns clearly
-### Window Functions
+- Window functions (RANK, ROW_NUMBER) cannot be
+  filtered in WHERE — they run after WHERE, need
+  CTE/subquery to filter on them
+- Aggregates in subqueries must be scoped with the
+  SAME join/filter as the outer query, or you risk
+  comparing against the wrong population
+- Subquery vs CTE: filtering on a VALUE → subquery
+  with MAX (no extra column); filtering on a
+  POSITION (top N, Nth highest) → CTE with RANK
+  (extra column is justified)
+- ### Window Functions
 OVER() = defines the window (group of rows)
 PARTITION BY = divides into groups (like GROUP BY
                but keeps all rows)
