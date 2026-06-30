@@ -7,7 +7,7 @@ building toward Data Engineer role.
 ## Progress
 | Difficulty | Solved |
 |---|---|
-| Easy | 4 |
+| Easy | 5 |
 | Medium | 0 |
 | Hard | 0 |
 
@@ -55,3 +55,12 @@ WITH ranked AS (
         ORDER BY value_col DESC) AS rn
     FROM table)
 SELECT * FROM ranked WHERE rn = 1
+- AVG() OVER(PARTITION BY...) keeps every row, unlike
+  GROUP BY which collapses to one row per group
+- Window function "extra column" is the deliverable
+  when a problem needs row-level detail AND a
+  group-level stat in the same output
+- Just displaying a group stat alongside row detail
+  → window function directly, CTE unnecessary
+  (CTE only earns its place when filtering on the
+  windowed column afterward)
