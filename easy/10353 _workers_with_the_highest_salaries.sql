@@ -1,4 +1,3 @@
-GitHub Entry
 -- Problem: Workers With The Highest Salaries
 -- Source: StrataScratch ID 10353
 -- Difficulty: Easy
