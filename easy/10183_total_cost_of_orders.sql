@@ -8,10 +8,10 @@
 -- JOIN + SUM aggregate
 -- ===========================================
 
-SELECT c.cust_id, c.first_name, SUM(o.total_order_cost) AS total_cost
+SELECT o.cust_id, c.first_name, SUM(o.total_order_cost) AS total_cost
 FROM customers c
 JOIN orders o ON o.cust_id = c.id
-GROUP BY c.cust_id, c.first_name
+GROUP BY o.cust_id, c.first_name
 ORDER BY c.first_name
 
 -- ===========================================
