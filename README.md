@@ -33,7 +33,6 @@ building toward Data Engineer role.
   with MAX (no extra column); filtering on a
   POSITION (top N, Nth highest) → CTE with RANK
   (extra column is justified)
-- NULL comparisons: = NULL and <> NULL always fail, use IS NULL / IS NOT NULL
 - ### Window Functions
 OVER() = defines the window (group of rows)
 PARTITION BY = divides into groups (like GROUP BY
@@ -65,3 +64,4 @@ SELECT * FROM ranked WHERE rn = 1
   → window function directly, CTE unnecessary
   (CTE only earns its place when filtering on the
   windowed column afterward)
+- NULL comparisons: = NULL and <> NULL always fail, use IS NULL / IS NOT NULL
