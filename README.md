@@ -19,10 +19,14 @@ building toward Data Engineer role.
 - IN() cleaner than multiple OR conditions
 - CTEs make complex logic readable
 - ROW_NUMBER vs RANK vs DENSE_RANK differences
-- Simple GROUP BY + MAX beats window function
-  when problem only needs highest value
+- Always check grain before choosing GROUP BY vs window function
+  (COUNT(*) > 1 checks on key column combinations)
+- GROUP BY + MAX only safe when all selected columns
+  are functionally dependent on the GROUP BY key
+- ROW_NUMBER() is the correct tool when columns vary per group key
 - Never name CTE same as source table
 - Always check ORDER BY in requirements
+- Never name CTE same as source table
 - Window functions (RANK, ROW_NUMBER) cannot be
   filtered in WHERE — they run after WHERE, need
   CTE/subquery to filter on them
